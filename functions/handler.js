@@ -9,7 +9,7 @@ const isSigned = (timestamp, nonce, webhookId, signature) => {
   return signature === checkHash;
 }
 
-exports.handler = async (event, callback) => {
+exports.handler = async (event, context, callback) => {
   if (!event.body) {
     callback(null, {
       statusCode: 400,
