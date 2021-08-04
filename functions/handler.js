@@ -1,4 +1,4 @@
-import hmacSHA512 from 'crypto-js/hmac-sha512';
+const hmacSHA512 = require("crypto-js/hmac-sha512");
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
 
