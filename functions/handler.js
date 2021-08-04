@@ -40,6 +40,7 @@ exports.handler = async (event, context, callback) => {
   }
 
   console.log("Webhook received!");
+  console.log(event.body);
   callback(null, {
     statusCode: 200
   });
