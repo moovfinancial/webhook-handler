@@ -1,4 +1,4 @@
-# Webhook handler
+# Moov webhook handler
 
 This app shows how easy it is to verify the signature of a webhook message coming from Moov using a serverless function. [Read the docs](https://docs.moov.io/guides/developer-tools/webhooks/) for more information.
 
