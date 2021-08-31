@@ -5,6 +5,12 @@ const webhookSecret = process.env.WEBHOOK_SECRET;
 const isSigned = (timestamp, nonce, webhookId, signature) => {
   const concatHeaders = `${timestamp}|${nonce}|${webhookId}`;
   const checkHash = hmacSHA512(concatHeaders, webhookSecret);
+  
+  console.log("timestamp: " + timestamp);
+  console.log("nonce: " + nonce);
+  console.log("webhookdId: " + webhookId);
+  console.log("signature: " + signature);
+  console.log("match?: " + signature === checkHash);
 
   return signature === checkHash;
 }
@@ -21,7 +27,7 @@ exports.handler = async (event, context, callback) => {
   if (!isSigned(
     event.headers["X-Timestamp"], 
     event.headers["X-Nonce"], 
-    event.headers["X-Webhook-ID"], 
+    event.headers["X-Webhook-Id"], 
     event.headers["X-Signature"])
   ) {
     console.log("Signature is invalid");
