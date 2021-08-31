@@ -11,6 +11,7 @@ const isSigned = (timestamp, nonce, webhookId, signature) => {
 
 exports.handler = async (event, context, callback) => {
   if (!event.body) {
+    console.log("Invalid request");
     callback(null, {
       statusCode: 400,
       body: "Invalid request"
@@ -23,6 +24,7 @@ exports.handler = async (event, context, callback) => {
     event.headers["X-Webhook-ID"], 
     event.headers["X-Signature"])
   ) {
+    console.log("Signature is invalid");
     callback(null, {
       statusCode: 400,
       body: "Signature is invalid"
@@ -33,6 +35,7 @@ exports.handler = async (event, context, callback) => {
   try {
     webhook = JSON.parse(event.body);
   } catch (err) {
+    console.log("Invalid JSON");
     callback(null, {
       statusCode: 400,
       body: "Invalid JSON"
