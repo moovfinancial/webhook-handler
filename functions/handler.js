@@ -10,7 +10,6 @@ const isSigned = (timestamp, nonce, webhookId, signature) => {
 }
 
 exports.handler = async (event, context, callback) => {
-  console.log(event);
   if (!event.body) {
     console.log("Invalid request");
     callback(null, {
@@ -19,11 +18,12 @@ exports.handler = async (event, context, callback) => {
     });
   }
 
+  // headers are lowercased
   if (!isSigned(
-    event.headers["X-Timestamp"], 
-    event.headers["X-Nonce"], 
-    event.headers["X-Webhook-Id"], 
-    event.headers["X-Signature"])
+    event.headers["x-timestamp"], 
+    event.headers["x-nonce"], 
+    event.headers["x-webhook-id"], 
+    event.headers["x-signature"])
   ) {
     console.log("Signature is invalid");
     callback(null, {
