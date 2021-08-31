@@ -6,7 +6,7 @@ const isSigned = (timestamp, nonce, webhookId, signature) => {
   const concatHeaders = `${timestamp}|${nonce}|${webhookId}`;
   const checkHash = hmacSHA512(concatHeaders, webhookSecret);
 
-  return signature === checkHash;
+  return signature === checkHash.toString();
 }
 
 exports.handler = async (event, context, callback) => {
