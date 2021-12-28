@@ -4,7 +4,7 @@ This app shows how easy it is to verify the signature of a webhook message comin
 
 ## Setting things up
 
-We're using Netlify is quickly deploy the serverless function to AWS. We'll use ngrok to create a public URL that can tunnel to your localhost. The only other dependency is [crypto-js](https://github.com/brix/crypto-js) for creating a hash of the header values and the webhook signature.
+We're using Netlify to quickly deploy the serverless function. We'll use ngrok to create a public URL that can tunnel to your localhost. The only other dependency is [crypto-js](https://github.com/brix/crypto-js) for creating a hash of the header values and the webhook signature.
 
 1. Clone the repo and install dependencies with `yarn`
 2. After creating a webhook in the Moov Dashboard, copy the signing secret and assign the value to a `WEBHOOK_SECRET` environment variable. If using `netlify cli` you can use the `netlify env:set WEBHOOK_SECRET {value}` command.
