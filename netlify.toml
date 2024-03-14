@@ -3,5 +3,6 @@
 
 [[redirects]]
   from = "/webhook-handler"
-  to = "/.netlify/functions/handler"
+  # Set path to either javascript or go
+  to = "/.netlify/functions/javascript/"
   status = 200
