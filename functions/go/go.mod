@@ -1,5 +1,5 @@
 module github.com/moovfinancial/webhook-handler/functions/go
 
-go 1.22.1
+go 1.22
 
 require github.com/aws/aws-lambda-go v1.46.0
