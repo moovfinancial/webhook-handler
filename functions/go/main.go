@@ -31,20 +31,21 @@ func handler(r events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, 
 		return nil, err
 	}
 
-	if *wantHash != gotHash {
+	if *wantHash == gotHash {
+		fmt.Println("Webhook received!")
+
+		return &events.APIGatewayProxyResponse{
+			StatusCode: 200,
+		}, nil
+	} else {
 		msg := "Signature is invalid"
 		fmt.Println(msg)
+
 		return &events.APIGatewayProxyResponse{
 			StatusCode: 400,
 			Body:       msg,
 		}, nil
-
 	}
-
-	fmt.Println("Webhook received!")
-	return &events.APIGatewayProxyResponse{
-		StatusCode: 200,
-	}, nil
 }
 
 // hash generates a SHA512 HMAC hash of p using the secret provided.
